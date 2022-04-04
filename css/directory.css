@@ -1,0 +1,46 @@
+:root {
+  --l-move: -85px;
+}
+div[id^='p'] {
+  height: 400px;
+  background-color: skyblue;
+  margin-top: 20px;
+}
+.side {
+  height: 120px;
+  width: 120px;
+  padding-left: 5px;
+  position: fixed;
+  left: 0;
+  top: 50px;
+  transform: translateX(var(--l-move));
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+.side li {
+  line-height: 37px;
+  padding-right: 5px;
+}
+.side li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 13px;
+}
+.dir {
+  padding-right: 2px;
+  color: #333;
+  text-align: center;
+  writing-mode: vertical-lr; /*从左向右 从右向左是 writing-mode: vertical-rl;*/
+  writing-mode: tb-lr; /*IE浏览器的从左向右 从右向左是 writing-mode: tb-rl；*/
+  cursor: default;
+  font-size: 14px;
+}
+.side:hover {
+  transform: translateX(0);
+  transition: all 0.5s;
+}
+.side:not(.side:hover) {
+  transform: translateX(var(--l-move));
+  transition: all 0.5s;
+}

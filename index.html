@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.0/build/styles/default.min.css"
+    />
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.0/build/highlight.min.js"></script>
+    <script>
+      hljs.highlightAll()
+    </script>
+    <script src="./js/throttle.js" defer></script>
+    <script src="./js/index.js" defer></script>
+    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="./css/directory.css" />
+    <link rel="stylesheet" href="./css/backtop.css" />
+  </head>
+  <body>
+    <!-- 目录 -->
+    <div class="side">
+      <ol>
+        <li><a href="javascript:;">一、水平居中</a></li>
+        <li><a href="javascript:;">二、垂直居中</a></li>
+        <li><a href="javascript:;">三、综合使用</a></li>
+      </ol>
+      <span class="dir">目 录</span>
+    </div>
+
+    <!-- backtop -->
+    <span class="backtop"></span>
+
+    <header class="w" id="horizontal">
+      <h1>一、水平居中对齐（共 7 种）</h1>
+    </header>
+    <main class="w">
+      <!-- # 1、行内元素 -->
+      <div class="box">
+        <div class="parent parent1">
+          <span class="stick">parent1</span>
+          <span class="child child1">行内: child1</span>
+        </div>
+        <div style="flex: 2">
+          <h3>1、行内元素：text-align: center（文本居中）</h3>
+          <pre class="desc">
+        <code class="language-css">
+          .parent1 {
+            text-align: center;
+          }
+        </code>
+      </pre>
+        </div>
+      </div>
+
+      <!-- # 2、块级元素 margin -->
+      <div class="box">
+        <div class="parent parent2">
+          <span class="stick">parent2</span>
+          <div class="child child2">块级(定宽): child2</div>
+        </div>
+        <div style="flex: 2">
+          <h3>2、块级元素 margin: 0 auto</h3>
+          <pre class="desc">
+          <code class="language-css">
+          .child2 {                   
+            width: 160px;                   
+            margin: 0 auto;                   
+          }                  
+          </code>
+      </pre>
+        </div>
+      </div>
+
+      <!-- # 3、块级元素 flex -->
+      <div class="box">
+        <div class="parent parent3">
+          <span class="stick">parent3</span>
+          <div class="child child3">块级(定宽): child3</div>
+        </div>
+        <div style="flex: 2">
+          <h3>3、块级元素：flex 一把梭（IE8不支持）</h3>
+          <pre class="desc">
+          <code class="language-css">
+    .parent3 {
+      display: flex;
+      justify-content: center;
+    }
+          </code>
+          <code class="language-css">
+    .child3 {
+      width: 130px;
+      height: 50px;
+    }
+          </code>
+          </pre>
+        </div>
+      </div>
+
+      <!-- # 4、块级元素：绝对定位 + transform: translate -->
+      <div class="box">
+        <div class="parent parent4">
+          <span class="stick">parent4</span>
+          <div class="child child4">块级(定宽): child4</div>
+        </div>
+        <div style="flex: 2">
+          <h3>
+            4、块级元素：绝对定位+transform（元素的宽度未知，高度未知。IE8不支持）
+          </h3>
+          <pre class="desc">
+          <code class="language-css">
+    .parent4 {
+      position: relative;
+    }
+          </code>
+          <code class="language-css">
+    .child4 {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 130px;
+    }
+          </code>
+          </pre>
+        </div>
+      </div>
+
+      <!-- # 5、块级元素：绝对定位 + margin-left  -->
+      <div class="box">
+        <div class="parent parent5">
+          <span class="stick">parent5</span>
+          <div class="child child5">块级(定宽): child5</div>
+        </div>
+
+        <div style="flex: 2">
+          <h3>5、块级元素：绝对定位+margin-left（元素高度和宽度已知时）</h3>
+          <pre class="desc">
+          <code class="language-css">
+    .parent5 {
+      position: relative;
+    }
+          </code>
+          <code class="language-css">
+    .child5 {
+      position: absolute;
+      left: 50%;
+      margin-left: -65px;
+      width: 130px;
+    }
+          </code>
+          </pre>
+        </div>
+      </div>
+
+      <!-- # 6、块级元素：绝对定位 + margin-left  -->
+      <div class="box">
+        <div class="parent parent6">
+          <span class="stick">parent6</span>
+          <div class="child child6">块级(定宽): child6</div>
+        </div>
+
+        <div style="flex: 2">
+          <h3>6、块级元素：绝对定位+left/right:0;+margin</h3>
+          <pre class="desc">
+            <code class="language-css">
+      .parent6 {
+        position: relative;
+      }
+            </code>
+            <code class="language-css">
+      .child6 {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        width: 130px;
+      }
+            </code>
+            </pre>
+        </div>
+      </div>
+
+      <!-- # 7、块级元素：绝对定位 + margin-left  -->
+      <div class="box">
+        <div class="parent parent7">
+          <span class="stick">parent7</span>
+          <div class="parent7-1">
+            <div class="child child7">块级(float): child7</div>
+          </div>
+        </div>
+
+        <div style="flex: 2">
+          <h3>7、块级元素（float）：fit-content + margin:auto</h3>
+          <pre class="desc">
+            <code class="language-css">
+      .parent7 {
+        margin: auto;
+        width: fit-content;
+      }
+            </code>
+            <code class="language-css">
+      .child7 {
+        float: left;
+      }
+            </code>
+            </pre>
+        </div>
+      </div>
+    </main>
+
+    <header class="w" id="vertical">
+      <h1 style="margin-top: 10px">二、垂直居中对齐（共 6 种）</h1>
+    </header>
+    <main class="w">
+      <!-- # 1、行内元素：line-height -->
+      <div class="box">
+        <div class="parent parent1-1">
+          <span class="stick">parent1</span>
+          <span class="child child1-1">行内: child1</span>
+        </div>
+        <div style="flex: 2">
+          <h3>1、行内元素：line-height（文本居中）</h3>
+          <pre class="desc">
+          <code class="language-css">
+      .parent1 {
+        height: 210px;
+      }
+          </code>
+          <code class="language-css">
+            .child1 {
+              line-height: 210px;
+            }
+          </code>
+        </pre>
+        </div>
+      </div>
+
+      <!-- # 2、行内块元素：vertical-align:middle; -->
+      <div class="box">
+        <div class="parent parent1-2">
+          <span class="stick">parent2</span>
+          <div class="child child1-2">行内块元素: child2</div>
+        </div>
+        <div style="flex: 2">
+          <h3>2、行内块元素：伪元素+vertical-align（IE7适用）</h3>
+          <pre class="desc">
+                <code class="language-css">
+  .parent2::after,
+  .child2 {
+    display: inline-block;
+    vertical-align: middle;
+  }
+                </code>
+                <code class="language-css">
+          .parent2::after {
+            content: '';
+            height: 100%;
+          }
+                </code>
+              </pre>
+        </div>
+      </div>
+
+      <!-- # 4、Flex 弹性盒子（IE8/IE9不支持）-->
+      <div class="box">
+        <div class="parent parent1-4">
+          <span class="stick">parent4</span>
+          <div class="child child1-4">块级：child4</div>
+        </div>
+        <div style="flex: 2">
+          <h3>4、Flex 弹性盒子（IE8/IE9不支持）</h3>
+          <pre class="desc">
+            <code class="language-css">
+          .parent4 {
+            display: flex;
+            align-items: center;
+          }
+            </code>
+          </pre>
+        </div>
+      </div>
+
+      <!-- # 5、绝对定位 + transform-->
+      <div class="box">
+        <div class="parent parent1-5">
+          <span class="stick">parent5</span>
+          <div class="child child1-5">块级：child5</div>
+        </div>
+        <div style="flex: 2">
+          <h3>
+            5、绝对定位 + transform（元素的宽度未知，高度未知。IE8不支持。）
+          </h3>
+          <pre class="desc">
+      <code class="language-css">
+      .parent5 {
+        position: relative;
+      }
+      </code>
+      <code class="language-css">
+    .child5 {
+      position: absolute;
+      top: 50%;
+      transform: translate(0, -50%);
+    }
+      </code>
+         </pre>
+        </div>
+      </div>
+
+      <!-- # 6、绝对定位 + margin-->
+      <div class="box">
+        <div class="parent parent1-6">
+          <span class="stick">parent6</span>
+          <div class="child child1-6">块级：child6</div>
+        </div>
+        <div style="flex: 2">
+          <h3>
+            6、绝对定位 + margin-top（元素高度和宽度已知时，适用所有浏览器）
+          </h3>
+          <pre class="desc">
+          <code class="language-css">
+      .parent1-6 {
+        position: relative;
+      }
+          </code>
+          <code class="language-css">
+      .child1-6 {
+        position: absolute;
+        top: 50%;
+        height: 50px;
+        margin-top: -25px;
+      }
+          </code>
+             </pre>
+        </div>
+      </div>
+
+      <!-- # 7、绝对定位 + top/bottom: 0;-->
+      <div class="box">
+        <div class="parent parent1-7">
+          <span class="stick">parent7</span>
+          <div class="child child1-7">块级：child7</div>
+        </div>
+        <div style="flex: 2">
+          <h3>
+            7、绝对定位+top/bottom:
+            0;（注意子绝父相；子盒子不给高度会充满父盒子）
+          </h3>
+          <pre class="desc">
+            <code class="language-css">
+        .parent7 {
+          position: relative;
+        }
+            </code>
+            <code class="language-css">
+        .child7 {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          margin: auto 0;
+          height: 50px;
+        }
+            </code>
+               </pre>
+        </div>
+      </div>
+    </main>
+
+    <header class="w" id="center">
+      <h1 style="margin-top: 10px">三、综合垂直水平居中（常用 7 种）</h1>
+    </header>
+    <main class="w">
+      <!-- # 1、行内元素 -->
+      <div class="box">
+        <div class="parent parent2-1">
+          <span class="stick">parent1</span>
+          <span class="child child2-1">行内: child1</span>
+        </div>
+        <div style="flex: 2">
+          <h3>1、行内元素：text-align: center（文本居中）</h3>
+          <pre class="desc">
+        <code class="language-css">
+        .parent1 {
+          text-align: center;
+          height: 220px;
+        }
+        </code>
+        <code class="language-css">
+        .child1 {
+          line-height: 220px;
+        }
+        </code>
+      </pre>
+        </div>
+      </div>
+
+      <!-- # 2、块级元素 margin -->
+      <div class="box">
+        <div class="parent parent2-2">
+          <span class="stick">parent2</span>
+          <div class="child child2-2">块级: child2</div>
+        </div>
+        <div style="flex: 2">
+          <h3>2、块级元素：flex（对于行内、行内块均适用）</h3>
+          <pre class="desc">
+          <code class="language-css">
+          .parent2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }                 
+          </code>
+      </pre>
+        </div>
+      </div>
+
+      <!-- # 3、绝对定位 + transform -->
+      <div class="box">
+        <div class="parent parent2-3">
+          <span class="stick">parent3</span>
+          <span class="child child2-3">块级: child3</span>
+        </div>
+        <div style="flex: 2">
+          <h3>
+            3、绝对定位 + transform（适用于未知宽高，行内、行内块；不适用 IE8）
+          </h3>
+          <pre class="desc">
+          <code class="language-css">
+    .parent3 {
+      position: relative;
+    }
+          </code>
+          <code class="language-css">
+  .child3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+          </code>
+          </pre>
+        </div>
+      </div>
+
+      <!-- # 4、块级元素：绝对定位 + margin 负边距 -->
+      <div class="box">
+        <div class="parent parent2-4">
+          <span class="stick">parent4</span>
+          <div class="child child2-4">child4</div>
+        </div>
+        <div style="flex: 2">
+          <h3>4、绝对定位 + margin 负边距（适用于高宽已知，适用所有浏览器）</h3>
+          <pre class="desc">
+          <code class="language-css">
+    .parent4 {
+      position: relative;
+    }
+          </code>
+          <code class="language-css">
+  .child4 {
+    position: absolute;
+    height: 50px; width: 100px; 
+    top: 50%; left: 50%;
+    /* margin 为负数，且为高宽的一半 */
+    margin: -25px -50px;
+  }
+          </code>
+          </pre>
+        </div>
+      </div>
+
+      <!-- # 5、grid 单个元素垂直居中  -->
+      <div class="box">
+        <div class="parent parent2-5">
+          <span class="stick">parent5</span>
+          <div class="child child2-5">child5</div>
+        </div>
+
+        <div style="flex: 2">
+          <h3>5、grid 单个元素垂直居中</h3>
+          <pre class="desc">
+          <code class="language-css">
+    .parent5 {
+      display: grid;
+      /* 或者 place-items: center; */
+    }
+          </code>
+          <code class="language-css">
+        .child5 {
+          margin: auto;
+        }
+          </code>
+          </pre>
+        </div>
+      </div>
+
+      <!-- # 6、块级元素：绝对定位 + margin-left  -->
+      <div class="box">
+        <div class="parent parent2-6">
+          <span class="stick">parent6</span>
+          <div class="child child2-6">块级(定宽高): child6</div>
+        </div>
+
+        <div style="flex: 2">
+          <h3>
+            6、定宽高块级元素：left/right/top/bottom 均设为0，margin设为 auto
+          </h3>
+          <pre class="desc">
+            <code class="language-css">
+      .parent6 {
+        position: relative;
+      }
+            </code>
+            <code class="language-css"> 
+      .child6 {
+        position: absolute;
+        left: 0; right: 0;
+        top: 0; bottom: 0;
+        margin: auto;
+        width: 130px; height: 50px;
+      }
+            </code>
+            </pre>
+        </div>
+      </div>
+
+      <!-- # 7、块级元素：绝对定位 + margin-left  -->
+      <div class="box">
+        <div class="parent parent2-7">
+          <span class="stick">parent7</span>
+          <div class="child child2-7">块级child7</div>
+        </div>
+
+        <div style="flex: 2">
+          <h3>
+            7、table-cell
+            强制表格单元化（父子元素均定宽高；不常用，某些情况有问题）
+          </h3>
+          <pre class="desc">
+            <code class="language-css">
+      .parent2-7 {
+        display: table-cell;
+        vertical-align: middle;
+        height: 200px;
+        width: 200px;
+      }
+            </code>
+            <code class="language-css">
+      .child2-7 {
+        margin: auto;
+        height: 50px;
+        width: 50px;
+      }
+            </code>
+            </pre>
+        </div>
+      </div>
+    </main>
+
+    <footer>&copy; MurphyChen 2022</footer>
+  </body>
+</html>
